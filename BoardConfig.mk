@@ -247,12 +247,13 @@ MOT_SENSOR_HUB_FEATURE_PEDO := true
 MOT_SENSOR_HUB_FEATURE_LA := true
 MOT_SENSOR_HUB_FEATURE_GR := true
 
+
 # Shim
-TARGET_LD_SHIM_LIBS := \
-    /vendor/bin/adspd|libshim_adsp.so \
-    /vendor/lib/libjustshoot.so|libshims_camera.so \
-    /vendor/lib/hw/camera.msm8953.so|libshim_camera_hal.so \
-    /vendor/lib64/libmdmcutback.so|libqsap_shim.so
+#TARGET_LD_SHIM_LIBS := \
+#    /vendor/bin/adspd|libshim_adsp.so \
+#    /vendor/lib/libjustshoot.so|libshims_camera.so \
+#    /vendor/lib/hw/camera.msm8953.so|libshim_camera_hal.so \
+#    /vendor/lib64/libmdmcutback.so|libqsap_shim.so
 
 # Thermal
 USE_DEVICE_SPECIFIC_THERMAL := true
