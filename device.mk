@@ -207,9 +207,7 @@ PRODUCT_PACKAGES += \
     libgnss \
     libgnsspps \
     android.hardware.gnss@1.1-impl-qti \
-    android.hardware.gnss@1.1-service-qti \
-    libqsap_sdk \
-    libqsap_shim
+    android.hardware.gnss@1.1-service-qti
 
 # Health
 PRODUCT_PACKAGES += \
@@ -489,4 +487,4 @@ PRODUCT_VENDOR_KERNEL_HEADERS := hardware/qcom/msm8996/kernel-headers
 PRODUCT_VENDOR_MOVE_ENABLED := true
 PRODUCT_FULL_TREBLE_OVERRIDE := true
 PRODUCT_COMPATIBILITY_MATRIX_LEVEL_OVERRIDE := 27
-
+TARGET_VENDOR_PROP += $(DEVICE_PATH)/vendor.prop
