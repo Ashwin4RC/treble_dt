@@ -72,7 +72,7 @@ TARGET_RECOVERY_DEVICE_MODULES := libinit_potter
 
 # Kernel
 BOARD_KERNEL_CMDLINE := console=ttyHSL0,115200,n8 androidboot.console=ttyHSL0 androidboot.hardware=qcom user_debug=30 msm_rtb.filter=0x237
-BOARD_KERNEL_CMDLINE += ehci-hcd.park=3 androidboot.bootdevice=7824900.sdhci lpm_levels.sleep_disabled=1 vmalloc=350M
+BOARD_KERNEL_CMDLINE += ehci-hcd.park=3 androidboot.bootdevice=7824900.sdhci lpm_levels.sleep_disabled=1 androidboot.selinux=permissive vmalloc=350M
 BOARD_KERNEL_BASE := 0x80000000
 BOARD_KERNEL_IMAGE_NAME := Image.gz
 BOARD_KERNEL_PAGESIZE := 2048
@@ -115,8 +115,8 @@ AUDIO_FEATURE_ENABLED_WMA_OFFLOAD := true
 AUDIO_USE_LL_AS_PRIMARY_OUTPUT := true
 AUDIO_FEATURE_ENABLED_SND_MONITOR := true
 BOARD_USES_ALSA_AUDIO := true
-BOARD_USES_GENERIC_AUDIO := true
-TARGET_USES_QCOM_MM_AUDIO := true
+USE_XML_AUDIO_POLICY_CONF := 1
+USE_CUSTOM_AUDIO_POLICY := 1
 
 # Bluetooth
 BOARD_BLUETOOTH_BDROID_BUILDCFG_INCLUDE_DIR := $(DEVICE_PATH)/bluetooth
@@ -218,12 +218,12 @@ TARGET_RELEASETOOLS_EXTENSIONS := $(DEVICE_PATH)/releasetools
 
 # SELinux
 include device/qcom/sepolicy/sepolicy.mk
-BOARD_SEPOLICY_DIRS += $(DEVICE_PATH)/sepolicy
+BOARD_SEPOLICY_DIRS += $(DEVICE_PATH)/sepolicy/vendor
+BOARD_PLAT_PRIVATE_SEPOLICY_DIR += $(DEVICE_PATH)/sepolicy/private
+BOARD_PLAT_PUBLIC_SEPOLICY_DIR += $(BOARD_PATH)/sepolicy/public
 include vendor/omni/sepolicy/sepolicy.mk
 
 # Sensor
-USE_SENSOR_MULTI_HAL := true
-
 BOARD_USES_MOT_SENSOR_HUB := true
 BOARD_USES_CAP_SENSOR_SX9310 := true
 
@@ -239,6 +239,16 @@ MOT_SENSOR_HUB_FEATURE_LIFT := true
 MOT_SENSOR_HUB_FEATURE_PEDO := true
 MOT_SENSOR_HUB_FEATURE_LA := true
 MOT_SENSOR_HUB_FEATURE_GR := true
+
+# Treble
+TARGET_COPY_OUT_VENDOR := vendor
+BOARD_VENDORIMAGE_PARTITION_SIZE := 665845760
+BOARD_VENDORIMAGE_FILE_SYSTEM_TYPE := ext4
+PRODUCT_VENDOR_MOVE_ENABLED := true
+PRODUCT_FULL_TREBLE_OVERRIDE := true
+# PRODUCT_SHIPPING_API_LEVEL := 24
+BOARD_PROPERTY_OVERRIDES_SPLIT_ENABLED := true
+# BOARD_VNDK_VERSION := current
 
 # Wifi
 BOARD_HAS_QCOM_WLAN              := true

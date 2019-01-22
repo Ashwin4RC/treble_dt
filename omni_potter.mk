@@ -36,6 +36,9 @@ $(call inherit-product, vendor/motorola/potter/potter-vendor.mk)
 TARGET_SCREEN_WIDTH := 1080
 TARGET_SCREEN_HEIGHT := 1920
 
+PRODUCT_ENFORCE_RRO_TARGETS := \
+    framework-res
+
 # CarrierConfig
 PRODUCT_PACKAGE_OVERLAYS += vendor/omni/overlay/CarrierConfig
 
